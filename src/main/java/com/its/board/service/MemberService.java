@@ -31,4 +31,8 @@ public class MemberService {
     int saveResult = memberRepository.save(memberDTO);
     return saveResult > 0;
   }
+
+  public MemberDTO login(MemberDTO memberDTO) {
+    return memberRepository.login(memberDTO);
+  }
 }

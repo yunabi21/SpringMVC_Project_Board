@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -35,6 +36,28 @@ public class MemberController {
     } else {
       System.out.println("회원가입 실패");
       return "/";
+    }
+  }
+
+  @GetMapping("/login")
+  public String login() {
+    return "/member/login";
+  }
+
+  @PostMapping("/login")
+  public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    System.out.println("MemberController.login");
+    System.out.println("memberDTO = " + memberDTO);
+
+    MemberDTO loginMemberDTO = memberService.login(memberDTO);
+    if (loginMemberDTO != null) {
+      System.out.println("로그인 성공");
+      session.setAttribute("loginId", memberDTO.getId());
+      session.setAttribute("loginMemberId", memberDTO.getMemberId());
+      return "/";
+    } else {
+      System.out.println("로그인 실패");
+      return "/member/login";
     }
   }
 }

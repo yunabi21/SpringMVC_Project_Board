@@ -8,5 +8,9 @@
         INSERT INTO member_table (memberId, memberPassword, memberName, memberEmail, memberMobile, memberProfileFileName)
         VALUES (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberMobile}, #{memberProfileFileName})
     </insert>
+
+    <select id="login" parameterType="member" resultType="member">
+        SELECT * FROM member_table WHERE memberId = #{memberId} AND memberPassword = #{memberPassword}
+    </select>
 </mapper>
 

@@ -15,4 +15,8 @@ public class MemberRepository {
     System.out.println("MemberRepository.save");
     return sql.insert("Member.save", memberDTO);
   }
+
+  public MemberDTO login(MemberDTO memberDTO) {
+    return sql.selectOne("Member.login", memberDTO);
+  }
 }
