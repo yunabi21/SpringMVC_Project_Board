@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GmarketSansMedium', sans-serif;
+}
+
+body {
+    background-size: cover;
+    background-color: #ccc !important ;
+    align-items: center;
+}
+
+.signin-container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30rem;
+    padding: 2.5rem;
+    padding-bottom: 0;
+    border: 2px solid #999999;
+    color: #222222;
+    background-color: #eee;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.title {
+    text-align: center;
+}
+
+.signup-input-wrap {
+    text-align: center;
+}
+
+.form-floating {
+    border-collapse: collapse;
+}
+
+#inputId, #inputPw {
+    margin-bottom: 20px;
+}
+
+.find-wrap {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.find-wrap li {
+    position: relative;
+    display: inline-block;
+    font-size: 0.8rem;
+}
+
+.find-wrap-symbol {
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.btn {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.find-wrap-a, .find-wrap-a:hover, .find-wrap-a:visited {
+    text-decoration: none;
+    color: #222222;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #5f39085e;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #222222;
+    outline: 0 none;
+}

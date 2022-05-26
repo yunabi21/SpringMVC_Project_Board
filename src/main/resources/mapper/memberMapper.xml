@@ -4,6 +4,9 @@
 
 
 <mapper namespace="Member">
-
+    <insert id="save" parameterType="member">
+        INSERT INTO member_table (memberId, memberPassword, memberName, memberEmail, memberMobile, memberProfileFileName)
+        VALUES (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberMobile}, #{memberProfileFileName})
+    </insert>
 </mapper>
 

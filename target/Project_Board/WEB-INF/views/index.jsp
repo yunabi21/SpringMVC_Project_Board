@@ -8,9 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Title</title>
+  <title>index.jsp</title>
+  <link href="../../resources/css/bootstrap.min.css">
 </head>
 <body>
-  <h2>index.jsp</h2>
+  <button class="btn btn-primary" onclick="saveForm()">회원가입</button>
+  <button class="btn btn-primary" onclick="loginForm()">로그인</button>
+  <button class="btn btn-secondary" onclick="boardList()">글 목록</button>
 </body>
+<script>
+  const saveForm = () => {
+    location.href = '/member/save';
+  }
+
+  const loginForm = () => {
+    location.href = '/member/login';
+  }
+
+  const boardList = () => {
+    location.href = '/board/findAll';
+  }
+</script>
 </html>
