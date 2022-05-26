@@ -35,7 +35,7 @@ public class MemberController {
       return "/member/login";
     } else {
       System.out.println("회원가입 실패");
-      return "/";
+      return "index";
     }
   }
 
@@ -54,10 +54,16 @@ public class MemberController {
       System.out.println("로그인 성공");
       session.setAttribute("loginId", memberDTO.getId());
       session.setAttribute("loginMemberId", memberDTO.getMemberId());
-      return "/";
+      return "index";
     } else {
       System.out.println("로그인 실패");
       return "/member/login";
     }
+  }
+
+  @GetMapping("/logout")
+  public String logout(HttpSession session) {
+    session.invalidate();
+    return "index";
   }
 }

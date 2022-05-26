@@ -14,6 +14,7 @@
 <%--  <script src="../../../resources/js/save.js"></script>--%>
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false" />
 <div class="signup-container">
   <div class="page-header">
     <div class="title">

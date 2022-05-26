@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../../resources/css/login.css">
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false" />
 <div class="signin-container">
   <div class="page-header">
     <div class="title">
@@ -22,12 +23,12 @@
   <form action="/member/login" method="post">
     <div class="signup-input-wrap">
       <div class="form-floating mb-1">
-        <input type="text" class="form-control" id="input-id" name="memberId" placeholder="아이디">
-        <label for="input-id">아이디</label>
+        <input type="text" class="form-control" id="inputId" name="memberId" placeholder="아이디">
+        <label for="inputId">아이디</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="input-pw" name="memberPassword" placeholder="비밀번호">
-        <label for="input-pw">비밀번호</label>
+        <input type="password" class="form-control" id="inputPw" name="memberPassword" placeholder="비밀번호">
+        <label for="inputPw">비밀번호</label>
       </div>
     </div>
     <div class="find-wrap">
@@ -38,7 +39,7 @@
       <li><a href="/member/save" class="find-wrap-a">회원가입</a></li>
     </div>
     <div class="enter-wrap">
-      <input type="submit" id="submit-button" class="btn btn-dark" value="로그인">
+      <input type="submit" id="submitButton" class="btn btn-dark submit-btn" value="로그인">
     </div>
   </form>
   <div class="error-msg-wrap">

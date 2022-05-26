@@ -9,24 +9,10 @@
 <html>
 <head>
   <title>index.jsp</title>
-  <link href="../../resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../resources/css/index.css">
 </head>
 <body>
-  <button class="btn btn-primary" onclick="saveForm()">회원가입</button>
-  <button class="btn btn-primary" onclick="loginForm()">로그인</button>
-  <button class="btn btn-secondary" onclick="boardList()">글 목록</button>
+<jsp:include page="layout/header.jsp" flush="false" />
 </body>
-<script>
-  const saveForm = () => {
-    location.href = '/member/save';
-  }
-
-  const loginForm = () => {
-    location.href = '/member/login';
-  }
-
-  const boardList = () => {
-    location.href = '/board/findAll';
-  }
-</script>
 </html>

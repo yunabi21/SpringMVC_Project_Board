@@ -52,7 +52,7 @@ label {
     margin-bottom: 24px;
 }
 
-.col-4 {
+input > .col-4 {
     width: 65% !important;
 }
 
