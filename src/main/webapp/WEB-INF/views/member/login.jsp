@@ -5,7 +5,7 @@
   Time: PM 3:16
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
   <title>로그인 페이지</title>
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../../../resources/css/login.css">
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false" />
+<jsp:include page="../layout/header.jsp"/>
 <div class="signin-container">
   <div class="page-header">
     <div class="title">

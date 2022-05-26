@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+    <select id="list" parameterType="java.util.HashMap" resultType="board">
+        SELECT * FROM board_table ORDER BY id DESC LIMIT #{start}, #{limit}
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(id) FROM board_table
+    </select>
+</mapper>

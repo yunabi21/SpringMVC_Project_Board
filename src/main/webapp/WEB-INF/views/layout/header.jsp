@@ -18,11 +18,11 @@
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a href="/" class="nav-link px-2 link-secondary">메인 화면</a></li>
       <li><a href="/member/save" class="nav-link px-2 link-dark">회원가입</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">글 목록</a></li>
+      <li><a href="/board/list" class="nav-link px-2 link-dark">글 목록</a></li>
     </ul>
 
     <c:choose>
-      <c:when test="${sessionScope.loginMemberId==null}">
+      <c:when test="${sessionScope.loginId eq null}">
         <div class="col-md-3 text-end">
           <button type="button" onclick="loginForm()" class="btn btn-outline-primary me-2">로그인</button>
           <button type="button" onclick="saveForm()" class="btn btn-primary">회원가입</button>
@@ -34,6 +34,7 @@
         </div>
       </c:otherwise>
     </c:choose>
+
   </header>
 </div>
 </body>

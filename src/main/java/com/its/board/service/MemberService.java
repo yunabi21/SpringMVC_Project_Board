@@ -33,6 +33,7 @@ public class MemberService {
   }
 
   public MemberDTO login(MemberDTO memberDTO) {
+    System.out.println("MemberService.login");
     return memberRepository.login(memberDTO);
   }
 }

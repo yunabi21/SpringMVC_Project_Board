@@ -5,7 +5,7 @@
   Time: PM 2:16
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
   <title>회원가입 페이지</title>
@@ -14,7 +14,7 @@
 <%--  <script src="../../../resources/js/save.js"></script>--%>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp" flush="false" />
+<jsp:include page="../layout/header.jsp"/>
 <div class="signup-container">
   <div class="page-header">
     <div class="title">

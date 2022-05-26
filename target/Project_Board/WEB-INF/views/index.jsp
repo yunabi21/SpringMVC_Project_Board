@@ -5,7 +5,7 @@
   Time: PM 1:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
   <title>index.jsp</title>
@@ -13,6 +13,6 @@
   <link rel="stylesheet" href="../../resources/css/index.css">
 </head>
 <body>
-<jsp:include page="layout/header.jsp" flush="false" />
+<jsp:include page="layout/header.jsp"/>
 </body>
 </html>

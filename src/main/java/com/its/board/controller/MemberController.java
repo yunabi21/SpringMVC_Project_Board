@@ -41,6 +41,7 @@ public class MemberController {
 
   @GetMapping("/login")
   public String login() {
+    System.out.println("MemberController.login");
     return "/member/login";
   }
 
@@ -52,8 +53,9 @@ public class MemberController {
     MemberDTO loginMemberDTO = memberService.login(memberDTO);
     if (loginMemberDTO != null) {
       System.out.println("로그인 성공");
-      session.setAttribute("loginId", memberDTO.getId());
-      session.setAttribute("loginMemberId", memberDTO.getMemberId());
+
+      session.setAttribute("loginId", loginMemberDTO.getId());
+      session.setAttribute("loginMemberId", loginMemberDTO.getMemberId());
       return "index";
     } else {
       System.out.println("로그인 실패");
@@ -63,6 +65,8 @@ public class MemberController {
 
   @GetMapping("/logout")
   public String logout(HttpSession session) {
+    System.out.println("MemberController.logout");
+
     session.invalidate();
     return "index";
   }
