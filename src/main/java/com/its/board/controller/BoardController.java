@@ -64,6 +64,7 @@ public class BoardController {
   @GetMapping("/detail")
   public String detail(@RequestParam("id") Long id,
                        @RequestParam("boardWriter") String boardWriter,
+                       @RequestParam(value = "page", required = false, defaultValue = "1") int page,
                        Model model) {
     System.out.println("BoardController.detail");
 
@@ -71,6 +72,7 @@ public class BoardController {
     BoardDTO boardDTO = findById(id);
     model.addAttribute("boardWriter", memberDTO);
     model.addAttribute("board", boardDTO);
+    model.addAttribute("page", page);
     return "/board/detail";
   }
 }

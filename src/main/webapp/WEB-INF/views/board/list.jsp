@@ -32,7 +32,7 @@
       <c:forEach var="board" items="${boardList}">
         <tr>
           <td>${board.id}</td>
-          <td><a href="${pageContext.request.contextPath}/board/detail?id=${board.id}&boardWriter=${board.boardWriter}">${board.boardTitle}</a></td>
+          <td><a href="${pageContext.request.contextPath}/board/detail?page=${paging.page}&id=${board.id}&boardWriter=${board.boardWriter}">${board.boardTitle}</a></td>
           <td>${board.boardContents}</td>
           <td>${board.boardWriter}</td>
           <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.boardCreatedDate}" /></td>

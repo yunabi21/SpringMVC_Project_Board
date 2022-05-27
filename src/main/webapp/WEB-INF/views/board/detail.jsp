@@ -5,7 +5,7 @@
   Time: AM 10:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -56,10 +56,20 @@
     </div>
 
   </div>
-  <div class="edit-delete-wrap">
-    <input type="button" class="btn btn-dark" onclick="updateBTN()" value="수정">
-    <input type="button" class="btn btn-dark" onclick="deleteBTN()" value="삭제">
-  </div>
+  <c:choose>
+    <c:when test="${sessionScope.loginMemberId eq boardWriter.memberId}">
+      <div class="edit-delete-wrap">
+        <input type="button" class="btn btn-dark" onclick="listBack()" value="목록">
+        <input type="button" class="btn btn-dark" onclick="updateBTN()" value="수정">
+        <input type="button" class="btn btn-dark" onclick="deleteBTN()" value="삭제">
+      </div>
+    </c:when>
+    <c:otherwise>
+      <div class="edit-delete-wrap">
+        <input type="button" class="btn btn-dark" onclick="listBack()" value="목록">
+      </div>
+    </c:otherwise>
+  </c:choose>
 
   <form action="/comment/save" method="post">
     <div class="comment-input-wrap">
@@ -71,13 +81,13 @@
     <div class="form-control mb-4 comment-wrap">
       <table class="table">
         <tr>
-          <td name="comment-writer" class="comment-writer">asdf</td>
-          <td name="comment-contents" class="comment-contents">fdsgdfsgsdg</td>
+          <td name="comment-writer" class="comment-writer">댓글 작성자1</td>
+          <td name="comment-contents" class="comment-contents">댓글 내용1</td>
           <td name="commentCreatedDate" class="comment-created-date">2022-04-05 23:34:56</td>
         </tr>
         <tr>
-          <td name="comment-writer" class="comment-writer">sdfgsdfg</td>
-          <td name="comment-contents" class="comment-contents">fdshgsfgassdfsdfsdfsdfssdfsdfsdfsdfdfasdf</td>
+          <td name="comment-writer" class="comment-writer">댓글 작성자2</td>
+          <td name="comment-contents" class="comment-contents">댓글 내용2</td>
           <td name="commentCreatedDate" class="comment-created-date">2022-04-05 23:34:56</td>
       </table>
     </div>
@@ -85,6 +95,10 @@
 </div>
 </body>
 <script>
+  const listBack = () => {
+    location.href = '/board/list?page=${page}';
+  }
+
   const updateBTN = () => {
 
   }
