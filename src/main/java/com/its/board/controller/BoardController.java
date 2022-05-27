@@ -85,4 +85,24 @@ public class BoardController {
     model.addAttribute("boardFileName", boardFileName);
     return "/board/img";
   }
+
+  @GetMapping("/update")
+  public String update(@RequestParam("id") Long id, Model model) {
+    System.out.println("BoardController.update");
+
+    BoardDTO boardDTO = boardService.findById(id);
+    model.addAttribute("board", boardDTO);
+    return "/board/update";
+  }
+
+  @PostMapping("/update")
+  public String update(@ModelAttribute BoardDTO boardDTO,
+                       @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                       Model model) throws IOException {
+    System.out.println("BoardController.update");
+
+    boardService.update(boardDTO);
+    model.addAttribute("board", boardDTO);
+    return "redirect:/board/detail?id=" + boardDTO.getId() + "&page=" + page + "&boardWriter=" + boardDTO.getBoardWriter();
+  }
 }

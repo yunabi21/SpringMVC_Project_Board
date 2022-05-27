@@ -47,14 +47,7 @@ public class BoardService {
   public boolean save(BoardDTO boardDTO) throws IOException {
     System.out.println("BoardService.save");
 
-    MultipartFile boardFile = boardDTO.getBoardFile();
-    String boardFileName = boardFile.getOriginalFilename();
-    boardFileName = System.currentTimeMillis() + "-" + boardFileName;
-    boardDTO.setBoardFileName(boardFileName);
-    String savePath = "D:\\project_img\\board\\" +  boardFileName;
-
-    if (!boardFile.isEmpty()) boardFile.transferTo(new File(savePath));
-
+    saveFile(boardDTO);
     int saveResult = boardRepository.save(boardDTO);
     return saveResult > 0;
   }
@@ -62,5 +55,22 @@ public class BoardService {
   public BoardDTO findById(Long id) {
     System.out.println("BoardService.findById");
     return boardRepository.findById(id);
+  }
+
+  public void update(BoardDTO boardDTO) throws IOException {
+    System.out.println("BoardService.update");
+
+    saveFile(boardDTO);
+    boardRepository.update(boardDTO);
+  }
+
+  private void saveFile(BoardDTO boardDTO) throws IOException {
+    MultipartFile boardFile = boardDTO.getBoardFile();
+    String boardFileName = boardFile.getOriginalFilename();
+    boardFileName = System.currentTimeMillis() + "-" + boardFileName;
+    boardDTO.setBoardFileName(boardFileName);
+    String savePath = "D:\\project_img\\board\\" +  boardFileName;
+
+    if (!boardFile.isEmpty()) boardFile.transferTo(new File(savePath));
   }
 }

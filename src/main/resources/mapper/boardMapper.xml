@@ -23,4 +23,9 @@
     <update id="addHits" parameterType="Long">
         UPDATE board_table SET boardHits = boardHits + 1 WHERE id = #{id}
     </update>
+
+    <update id="update" parameterType="board">
+        UPDATE board_table SET boardTitle = #{boardTitle}, boardContents = #{boardContents}, boardFileName = #{boardFileName}
+        WHERE id = #{id}
+    </update>
 </mapper>

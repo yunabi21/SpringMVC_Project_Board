@@ -22,8 +22,8 @@
       <h2>글 상세조회 페이지</h2>
     </div>
   </div>
-  <div class="signup-content-wrap">
 
+  <div class="signup-content-wrap">
     <div class="form-control mb-4 inputItems">
       <label for="input-memberId">작성자</label>
       <input type="text" class="input-memberId form-control col-2 form-control-sm" id="input-memberId" value="${boardWriter.memberId}" readonly>
@@ -54,8 +54,8 @@
       <label for="input-file">파일 첨부</label>
       <a target="_blank" href="${pageContext.request.contextPath}/board/img?boardFileName=${board.boardFileName}" class="input-file form-control col-2 form-control-sm" id="input-file" readonly>${board.boardFileName}</a>
     </div>
-
   </div>
+
   <c:choose>
     <c:when test="${sessionScope.loginMemberId eq boardWriter.memberId}">
       <div class="edit-delete-wrap">
@@ -100,7 +100,7 @@
   }
 
   const updateBTN = () => {
-
+    location.href = '/board/update?id=${board.id}';
   }
 
   const deleteBTN = () => {

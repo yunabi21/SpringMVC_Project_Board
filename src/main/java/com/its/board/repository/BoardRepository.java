@@ -34,4 +34,9 @@ public class BoardRepository {
     sql.update("Board.addHits", id);
     return sql.selectOne("Board.findById", id);
   }
+
+  public void update(BoardDTO boardDTO) {
+    System.out.println("BoardRepository.update");
+    sql.update("Board.update", boardDTO);
+  }
 }
