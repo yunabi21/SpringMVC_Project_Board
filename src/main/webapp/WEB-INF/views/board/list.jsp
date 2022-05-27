@@ -32,7 +32,7 @@
       <c:forEach var="board" items="${boardList}">
         <tr>
           <td>${board.id}</td>
-          <td>${board.boardTitle}</td>
+          <td><a href="${pageContext.request.contextPath}/board/detail?id=${board.id}&boardWriter=${board.boardWriter}">${board.boardTitle}</a></td>
           <td>${board.boardContents}</td>
           <td>${board.boardWriter}</td>
           <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.boardCreatedDate}" /></td>
@@ -42,11 +42,22 @@
     </tbody>
   </table>
 </div>
-<div class="container">
-  <div class="col-md-3 align-content-end">
-    <button type="button" onclick="boardSaveForm()" class="btn btn-outline-dark me-2 mb-4">글 작성</button>
-  </div>
-</div>
+<c:choose>
+  <c:when test="${sessionScope.loginId==null}">
+    <div class="container">
+      <div class="col-md-3 align-content-end">
+
+      </div>
+    </div>
+  </c:when>
+  <c:otherwise>
+    <div class="container">
+      <div class="col-md-3 align-content-end">
+        <button type="button" onclick="boardSaveForm()" class="btn btn-outline-dark me-2 mb-4">글 작성</button>
+      </div>
+    </div>
+  </c:otherwise>
+</c:choose>
 
 <div class="container">
   <ul class="pagination justify-content-center">

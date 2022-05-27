@@ -4,10 +4,7 @@ import com.its.board.dto.MemberDTO;
 import com.its.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -69,5 +66,11 @@ public class MemberController {
 
     session.invalidate();
     return "index";
+  }
+
+  @GetMapping("/findById")
+  public MemberDTO findById(@RequestParam("boardWriter") String boardWriter) {
+    System.out.println("MemberController.findById");
+    return memberService.findById(boardWriter);
   }
 }

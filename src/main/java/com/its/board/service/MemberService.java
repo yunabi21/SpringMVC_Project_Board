@@ -36,4 +36,9 @@ public class MemberService {
     System.out.println("MemberService.login");
     return memberRepository.login(memberDTO);
   }
+
+  public MemberDTO findById(String boardWriter) {
+    System.out.println("MemberService.findById");
+    return memberRepository.findById(boardWriter);
+  }
 }

@@ -20,4 +20,9 @@ public class MemberRepository {
     System.out.println("MemberRepository.login");
     return sql.selectOne("Member.login", memberDTO);
   }
+
+  public MemberDTO findById(String boardWriter) {
+    System.out.println("MemberRepository.findById");
+    return sql.selectOne("Member.findById", boardWriter);
+  }
 }

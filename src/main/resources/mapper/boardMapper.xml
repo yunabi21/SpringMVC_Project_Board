@@ -15,4 +15,12 @@
         INSERT INTO board_table (boardTitle, boardWriter, boardContents, boardCreatedDate, boardFileName)
         VALUES (#{boardTitle}, #{boardWriter}, #{boardContents}, now(), #{boardFileName})
     </insert>
+
+    <select id="findById" parameterType="Long" resultType="board">
+        SELECT * FROM board_table WHERE id = #{id}
+    </select>
+
+    <update id="addHits" parameterType="Long">
+        UPDATE board_table SET boardHits = boardHits + 1 WHERE id = #{id}
+    </update>
 </mapper>

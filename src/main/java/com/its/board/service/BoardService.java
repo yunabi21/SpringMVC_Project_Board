@@ -58,4 +58,9 @@ public class BoardService {
     int saveResult = boardRepository.save(boardDTO);
     return saveResult > 0;
   }
+
+  public BoardDTO findById(Long id) {
+    System.out.println("BoardService.findById");
+    return boardRepository.findById(id);
+  }
 }

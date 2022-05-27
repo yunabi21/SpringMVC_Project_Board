@@ -28,4 +28,10 @@ public class BoardRepository {
     System.out.println("BoardRepository.save");
     return sql.insert("Board.save", boardDTO);
   }
+
+  public BoardDTO findById(Long id) {
+    System.out.println("BoardRepository.findById");
+    sql.update("Board.addHits", id);
+    return sql.selectOne("Board.findById", id);
+  }
 }
