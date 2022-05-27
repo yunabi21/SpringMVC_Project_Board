@@ -75,4 +75,14 @@ public class BoardController {
     model.addAttribute("page", page);
     return "/board/detail";
   }
+
+  @GetMapping("/img")
+  public String img(@RequestParam("boardFileName") String boardFileName,
+                    Model model) {
+    System.out.println("BoardController.img");
+    System.out.println("boardFileName = " + boardFileName);
+
+    model.addAttribute("boardFileName", boardFileName);
+    return "/board/img";
+  }
 }

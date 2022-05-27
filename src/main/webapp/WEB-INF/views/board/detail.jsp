@@ -26,15 +26,15 @@
 
     <div class="form-control mb-4 inputItems">
       <label for="input-memberId">작성자</label>
-      <input type="text" class="input-memberId form-control col-2 form-control-sm" id="input-memberId" value="${boardWriter.memberId}">
+      <input type="text" class="input-memberId form-control col-2 form-control-sm" id="input-memberId" value="${boardWriter.memberId}" readonly>
       <div class="date-hits">
         <div class="board-hits-wrap">
           <span class="boardHits">조회수 : </span>
-          <li name="boardHits" class="board-hits">${board.boardHits}</li>
+          <li name="boardHits" class="board-hits" readonly="true">${board.boardHits}</li>
         </div>
         <div class="created-date-wrap">
           <span class="boardCreatedDate">작성일자 : </span>
-          <li name="boardCreatedDate" class="board-created-date">
+          <li name="boardCreatedDate" class="board-created-date" readonly="true">
             <fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.boardCreatedDate}" /></li>
         </div>
       </div>
@@ -42,17 +42,17 @@
 
     <div class="form-control mb-4 inputItems">
       <label for="input-title">제목</label>
-      <input type="text" name="boardTitle" value="${board.boardTitle}" class="input-title form-control col-4 form-control-sm" id="input-title">
+      <input type="text" name="boardTitle" value="${board.boardTitle}" class="input-title form-control col-4 form-control-sm" id="input-title" readonly>
     </div>
 
     <div class="form-control mb-4 inputItems">
       <label for="input-contents">내용</label>
-      <textarea name="boardContents" class="input-contents form-control col-4 form-control-sm" id="input-contents">${board.boardContents}</textarea>
+      <textarea name="boardContents" class="input-contents form-control col-4 form-control-sm" id="input-contents" readonly>${board.boardContents}</textarea>
     </div>
 
     <div class="form-control mb-4 inputItems">
       <label for="input-file">파일 첨부</label>
-      <a href="#" class="input-file form-control col-2 form-control-sm" id="input-file">${board.boardFileName}</a>
+      <a target="_blank" href="${pageContext.request.contextPath}/board/img?boardFileName=${board.boardFileName}" class="input-file form-control col-2 form-control-sm" id="input-file" readonly>${board.boardFileName}</a>
     </div>
 
   </div>
