@@ -15,11 +15,23 @@
 <body>
 <div class="container">
   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="/" class="nav-link px-2 link-secondary">메인 화면</a></li>
-      <li><a href="/member/save" class="nav-link px-2 link-dark">회원가입</a></li>
-      <li><a href="/board/list" class="nav-link px-2 link-dark">글 목록</a></li>
-    </ul>
+    <c:choose>
+      <c:when test="${sessionScope.loginMemberId eq 'admin'}">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary">메인 화면</a></li>
+          <li><a href="/member/save" class="nav-link px-2 link-dark">회원가입</a></li>
+          <li><a href="${pageContext.request.contextPath}/board/list" class="nav-link px-2 link-dark">글 목록</a></li>
+          <li><a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 link-dark">회원목록</a></li>
+        </ul>
+      </c:when>
+      <c:otherwise>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary">메인 화면</a></li>
+          <li><a href="/member/save" class="nav-link px-2 link-dark">회원가입</a></li>
+          <li><a href="${pageContext.request.contextPath}/board/list" class="nav-link px-2 link-dark">글 목록</a></li>
+        </ul>
+      </c:otherwise>
+    </c:choose>
 
     <c:choose>
       <c:when test="${sessionScope.loginId eq null}">

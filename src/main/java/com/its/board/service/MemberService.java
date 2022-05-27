@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class MemberService {
@@ -56,5 +57,10 @@ public class MemberService {
       memberDTO.setMemberProfileFileName(memberProfileFileName);
       memberProfile.transferTo(new File(savePath));
     }
+  }
+
+  public List<MemberDTO> findAll() {
+    System.out.println("MemberService.findAll");
+    return memberRepository.findAll();
   }
 }

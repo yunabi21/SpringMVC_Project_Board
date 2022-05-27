@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/member")
@@ -103,4 +104,15 @@ public class MemberController {
     memberService.update(memberDTO);
     return "index";
   }
+
+  @GetMapping("/admin")
+  public String admin(Model model) {
+    System.out.println("MemberController.admin");
+
+    List<MemberDTO> memberDTOList = memberService.findAll();
+    model.addAttribute("memberList", memberDTOList);
+    return "/member/admin";
+  }
+
+
 }

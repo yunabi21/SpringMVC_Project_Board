@@ -25,5 +25,9 @@
         UPDATE member_table SET memberEmail = #{memberEmail}, memberMobile = #{memberMobile}, memberProfileFileName = #{memberProfileFileName}
         WHERE id = #{id}
     </update>
+
+    <select id="findAll" resultType="member">
+        SELECT * FROM member_table;
+    </select>
 </mapper>
 

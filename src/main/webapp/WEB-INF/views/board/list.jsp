@@ -10,12 +10,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-  <jsp:include page="../layout/header.jsp" />
   <title>글 목록</title>
   <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../../resources/css/index.css">
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" />
+
 <div class="container">
   <table class="table table-striped">
     <thead>
