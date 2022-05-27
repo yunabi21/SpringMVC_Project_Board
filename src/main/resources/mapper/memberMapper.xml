@@ -13,8 +13,17 @@
         SELECT * FROM member_table WHERE memberId = #{memberId} AND memberPassword = #{memberPassword}
     </select>
 
-    <select id="findById" parameterType="String" resultType="member">
+    <select id="findByMemberId" parameterType="String" resultType="member">
         SELECT * FROM member_table WHERE memberId = #{boardWriter}
     </select>
+
+    <select id="findById" parameterType="Long" resultType="member">
+        SELECT * FROM member_table WHERE id = #{id}
+    </select>
+
+    <update id="update" parameterType="member">
+        UPDATE member_table SET memberEmail = #{memberEmail}, memberMobile = #{memberMobile}, memberProfileFileName = #{memberProfileFileName}
+        WHERE id = #{id}
+    </update>
 </mapper>
 

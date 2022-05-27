@@ -18,9 +18,9 @@ body {
 .signup-container {
     position: relative;
     height: auto;
-    left: 30%;
+    left: 38% !important;
     /* transform: translate(-50%, -50%); */
-    width: 50rem;
+    width: 30rem;
     padding: 2.5rem 2.5rem 0;
     border: 2px solid #999999;
     color: #222222;

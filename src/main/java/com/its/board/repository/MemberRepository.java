@@ -21,8 +21,18 @@ public class MemberRepository {
     return sql.selectOne("Member.login", memberDTO);
   }
 
-  public MemberDTO findById(String boardWriter) {
+  public MemberDTO findByMemberId(String boardWriter) {
+    System.out.println("MemberRepository.findByMemberId");
+    return sql.selectOne("Member.findByMemberId", boardWriter);
+  }
+
+  public MemberDTO findById(Long id) {
     System.out.println("MemberRepository.findById");
-    return sql.selectOne("Member.findById", boardWriter);
+    return sql.selectOne("Member.findById", id);
+  }
+
+  public void update(MemberDTO memberDTO) {
+    System.out.println("MemberRepository.update");
+    sql.update("Member.update", memberDTO);
   }
 }

@@ -44,8 +44,8 @@
         <label for="input-mobile">휴대전화</label>
       </div>
       <div class="form-control mb-4">
-        <input type="file" name="memberProfile" id="input-profile">
         <label for="input-profile">프로필 사진 등록</label>
+        <input type="file" name="memberProfile" id="input-profile">
       </div>
       <div class="enter-wrap">
         <input type="submit" id="submit-button" class="btn btn-dark" value="가입하기">

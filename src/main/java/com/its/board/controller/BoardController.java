@@ -73,7 +73,7 @@ public class BoardController {
                        Model model) {
     System.out.println("BoardController.detail");
 
-    MemberDTO memberDTO = memberService.findById(boardWriter);
+    MemberDTO memberDTO = memberService.findByMemberId(boardWriter);
     BoardDTO boardDTO = findById(id);
     List<CommentDTO> commentDTOList = commentService.list(id);
 

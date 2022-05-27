@@ -18,15 +18,7 @@ public class MemberService {
   public boolean save(MemberDTO memberDTO) throws IOException {
     System.out.println("MemberService.save");
 
-    MultipartFile memberProfile = memberDTO.getMemberProfile();
-    String memberProfileFileName = memberProfile.getOriginalFilename();
-    memberProfileFileName = System.currentTimeMillis() + "-" + memberProfileFileName;
-    String savePath = "D:\\project_img\\profile\\" + memberProfileFileName;
-
-    if (!memberProfile.isEmpty()) {
-      memberDTO.setMemberProfileFileName(memberProfileFileName);
-      memberProfile.transferTo(new File(savePath));
-    }
+    saveFile(memberDTO);
 
     int saveResult = memberRepository.save(memberDTO);
     return saveResult > 0;
@@ -37,8 +29,32 @@ public class MemberService {
     return memberRepository.login(memberDTO);
   }
 
-  public MemberDTO findById(String boardWriter) {
+  public MemberDTO findByMemberId(String boardWriter) {
+    System.out.println("MemberService.findByMemberId");
+    return memberRepository.findByMemberId(boardWriter);
+  }
+
+  public MemberDTO findById(Long id) {
     System.out.println("MemberService.findById");
-    return memberRepository.findById(boardWriter);
+    return memberRepository.findById(id);
+  }
+
+  public void update(MemberDTO memberDTO) throws IOException {
+    System.out.println("MemberService.update");
+
+    saveFile(memberDTO);
+    memberRepository.update(memberDTO);
+  }
+
+  private void saveFile(MemberDTO memberDTO) throws IOException {
+    MultipartFile memberProfile = memberDTO.getMemberProfile();
+    String memberProfileFileName = memberProfile.getOriginalFilename();
+    memberProfileFileName = System.currentTimeMillis() + "-" + memberProfileFileName;
+    String savePath = "D:\\project_img\\profile\\" + memberProfileFileName;
+
+    if (!memberProfile.isEmpty()) {
+      memberDTO.setMemberProfileFileName(memberProfileFileName);
+      memberProfile.transferTo(new File(savePath));
+    }
   }
 }

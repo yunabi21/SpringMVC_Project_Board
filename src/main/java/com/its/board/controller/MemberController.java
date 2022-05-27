@@ -4,6 +4,7 @@ import com.its.board.dto.MemberDTO;
 import com.its.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ public class MemberController {
 
   @GetMapping("/save")
   public String saveForm() {
+    System.out.println("MemberController.saveForm");
     return "/member/save";
   }
 
@@ -68,9 +70,37 @@ public class MemberController {
     return "index";
   }
 
-  @GetMapping("/findById")
-  public MemberDTO findById(@RequestParam("boardWriter") String boardWriter) {
-    System.out.println("MemberController.findById");
-    return memberService.findById(boardWriter);
+  @GetMapping("/findByMemberId")
+  public MemberDTO findByMemberId(@RequestParam("boardWriter") String boardWriter) {
+    System.out.println("MemberController.findByMemberId");
+    return memberService.findByMemberId(boardWriter);
+  }
+
+  @GetMapping("/my-page")
+  public String myPage(@RequestParam("id") Long id, Model model) {
+    System.out.println("MemberController.myPage");
+
+    MemberDTO memberDTO = memberService.findById(id);
+    model.addAttribute("member", memberDTO);
+    return "/member/my-page";
+  }
+
+  @GetMapping("/img")
+  public String img(@RequestParam("profileFileName") String profileFileName,
+                    Model model) {
+    System.out.println("MemberController.img");
+    System.out.println("profileFileName = " + profileFileName);
+
+    model.addAttribute("profileFileName", profileFileName);
+    return "/member/img";
+  }
+
+  @PostMapping("/update")
+  public String update(@ModelAttribute MemberDTO memberDTO) throws IOException {
+    System.out.println("MemberController.update");
+    System.out.println("memberDTO = " + memberDTO);
+
+    memberService.update(memberDTO);
+    return "index";
   }
 }

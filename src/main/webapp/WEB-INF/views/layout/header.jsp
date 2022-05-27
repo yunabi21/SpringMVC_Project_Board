@@ -24,13 +24,14 @@
     <c:choose>
       <c:when test="${sessionScope.loginId eq null}">
         <div class="col-md-3 text-end">
-          <button type="button" onclick="loginForm()" class="btn btn-outline-primary me-2">로그인</button>
-          <button type="button" onclick="saveForm()" class="btn btn-primary">회원가입</button>
+          <button type="button" onclick="loginForm()" class="btn btn-outline-dark me-2">로그인</button>
+          <button type="button" onclick="saveForm()" class="btn btn-dark">회원가입</button>
         </div>
       </c:when>
       <c:otherwise>
         <div class="col-md-3 text-end">
-          <button type="button" onclick="logout()" class="btn btn-outline-primary me-2">로그아웃</button>
+          <button type="button" onclick="logout()" class="btn btn-outline-dark me-2">로그아웃</button>
+          <button type="button" onclick="myPage()" class="btn btn-dark me-2">마이페이지</button>
         </div>
       </c:otherwise>
     </c:choose>
@@ -49,6 +50,10 @@
 
   const logout = () => {
     location.href = '/member/logout';
+  }
+
+  const myPage = () => {
+    location.href = '/member/my-page?id=${sessionScope.loginId}';
   }
 </script>
 </html>
