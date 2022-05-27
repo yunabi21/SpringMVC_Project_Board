@@ -68,10 +68,12 @@ public class BoardService {
     MultipartFile boardFile = boardDTO.getBoardFile();
     String boardFileName = boardFile.getOriginalFilename();
     boardFileName = System.currentTimeMillis() + "-" + boardFileName;
-    boardDTO.setBoardFileName(boardFileName);
     String savePath = "D:\\project_img\\board\\" +  boardFileName;
 
-    if (!boardFile.isEmpty()) boardFile.transferTo(new File(savePath));
+    if (!boardFile.isEmpty()) {
+      boardDTO.setBoardFileName(boardFileName);
+      boardFile.transferTo(new File(savePath));
+    };
   }
 
   public void delete(Long id) {

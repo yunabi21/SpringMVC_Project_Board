@@ -1,9 +1,11 @@
 package com.its.board.controller;
 
 import com.its.board.dto.BoardDTO;
+import com.its.board.dto.CommentDTO;
 import com.its.board.dto.MemberDTO;
 import com.its.board.dto.PageDTO;
 import com.its.board.service.BoardService;
+import com.its.board.service.CommentService;
 import com.its.board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class BoardController {
 
   @Autowired
   private MemberService memberService;
+
+  @Autowired
+  private CommentService commentService;
 
   @GetMapping("/list")
   public String list(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
@@ -70,9 +75,12 @@ public class BoardController {
 
     MemberDTO memberDTO = memberService.findById(boardWriter);
     BoardDTO boardDTO = findById(id);
+    List<CommentDTO> commentDTOList = commentService.list(id);
+
     model.addAttribute("boardWriter", memberDTO);
     model.addAttribute("board", boardDTO);
     model.addAttribute("page", page);
+    model.addAttribute("commentList", commentDTOList);
     return "/board/detail";
   }
 

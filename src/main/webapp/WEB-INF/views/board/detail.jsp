@@ -13,6 +13,8 @@
   <title>글 상세조회 페이지</title>
   <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../../resources/css/detail.css">
+  <script src="../../../resources/js/jquery.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" />
@@ -71,24 +73,27 @@
     </c:otherwise>
   </c:choose>
 
-  <form action="/comment/save" method="post">
+
     <div class="comment-input-wrap">
-      <input type="text" name="commentContents" class="form-control col-5 form-control-sm" placeholder="댓글 작성">
+      <input type="text" id="commentWriter" name="commentWriter" value="${sessionScope.loginMemberId}" hidden>
+      <input type="text" id="commentContents" name="commentContents" class="form-control col-5 form-control-sm" placeholder="댓글 작성">
       <input type="button" class="btn btn-dark comment-btn" onclick="commentSaveBTN()" value="작성">
     </div>
-  </form>
-  <div class="comment-wrap">
+
+  <div id="comment-list" class="comment-wrap">
     <div class="form-control mb-4 comment-wrap">
       <table class="table">
-        <tr>
-          <td name="comment-writer" class="comment-writer">댓글 작성자1</td>
-          <td name="comment-contents" class="comment-contents">댓글 내용1</td>
-          <td name="commentCreatedDate" class="comment-created-date">2022-04-05 23:34:56</td>
-        </tr>
-        <tr>
-          <td name="comment-writer" class="comment-writer">댓글 작성자2</td>
-          <td name="comment-contents" class="comment-contents">댓글 내용2</td>
-          <td name="commentCreatedDate" class="comment-created-date">2022-04-05 23:34:56</td>
+
+        <c:forEach var="comment" items="${commentList}">
+          <tr>
+            <td name="comment-writer" class="comment-writer">${comment.commentWriter}</td>
+            <td name="comment-contents" class="comment-contents">${comment.commentContents}</td>
+            <td name="comment-created-date" class="comment-created-date">
+              <fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${comment.commentCreatedDate}" />
+            </td>
+          </tr>
+        </c:forEach>
+
       </table>
     </div>
   </div>
@@ -108,7 +113,40 @@
   }
 
   const commentSaveBTN = () => {
+    const commentWriter = document.getElementById("commentWriter").value;
+    const commentContents = document.getElementById("commentContents").value;
+    const boardId = '${board.id}';
 
+    $.ajax({
+      url: '/comment/save',
+      type: 'post',
+      data: {"commentWriter" : commentWriter,
+              "commentContents" : commentContents,
+              "boardId" : boardId},
+      dataType: 'json',
+      success: function (result) {
+        console.log(result);
+        let output = "<div class='form-control mb-4 comment-wrap'>";
+        output += "<table class='table'>";
+        for (let i in result) {
+          output += "<tr>";
+          output += "<input type=text name='id' value='" + result[i].id + "' hidden>";
+          output += "<td class='comment-writer'>" + result[i].commentWriter + "</td>";
+          output += "<td class='comment-contents'>" + result[i].commentContents + "</td>";
+          output += "<td class='comment-created-date'>" + moment(result[i].commentCreatedDate).format("YYYY-MM-DD HH:mm:ss") + "</td>";
+          output += "</tr>";
+        }
+        output += "</table>";
+        output += "</div>";
+
+        document.getElementById('comment-list').innerHTML = output;
+        document.getElementById('commentWriter').value = '';
+        document.getElementById('commentContents').value = '';
+      },
+      err: function () {
+        alert("에러");
+      }
+    });
   }
 </script>
 </html>

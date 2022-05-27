@@ -21,10 +21,10 @@ public class MemberService {
     MultipartFile memberProfile = memberDTO.getMemberProfile();
     String memberProfileFileName = memberProfile.getOriginalFilename();
     memberProfileFileName = System.currentTimeMillis() + "-" + memberProfileFileName;
-    memberDTO.setMemberProfileFileName(memberProfileFileName);
     String savePath = "D:\\project_img\\profile\\" + memberProfileFileName;
 
     if (!memberProfile.isEmpty()) {
+      memberDTO.setMemberProfileFileName(memberProfileFileName);
       memberProfile.transferTo(new File(savePath));
     }
 
