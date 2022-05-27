@@ -10,6 +10,7 @@
 <html>
 <head>
   <title>관리자용 페이지</title>
+  <link rel="stylesheet" href="../../../resources/css/index.css">
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" />

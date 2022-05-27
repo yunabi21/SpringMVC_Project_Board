@@ -21,7 +21,7 @@
           <li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary">메인 화면</a></li>
           <li><a href="/member/save" class="nav-link px-2 link-dark">회원가입</a></li>
           <li><a href="${pageContext.request.contextPath}/board/list" class="nav-link px-2 link-dark">글 목록</a></li>
-          <li><a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 link-dark">회원목록</a></li>
+          <li><a href="${pageContext.request.contextPath}/member/admin" class="nav-link px-2 link-dark">회원목록</a></li>
         </ul>
       </c:when>
       <c:otherwise>
