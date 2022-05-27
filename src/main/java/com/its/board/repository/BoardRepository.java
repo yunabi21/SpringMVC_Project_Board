@@ -24,4 +24,8 @@ public class BoardRepository {
     return sql.selectOne("Board.count");
   }
 
+  public int save(BoardDTO boardDTO) {
+    System.out.println("BoardRepository.save");
+    return sql.insert("Board.save", boardDTO);
+  }
 }

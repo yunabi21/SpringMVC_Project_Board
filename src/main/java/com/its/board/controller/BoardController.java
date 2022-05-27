@@ -6,10 +6,9 @@ import com.its.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -34,7 +33,19 @@ public class BoardController {
   }
 
   @GetMapping("/save")
-  public String save() {
+  public String saveForm() {
+    System.out.println("BoardController.save");
     return "/board/save";
+  }
+
+  @PostMapping("/save")
+  public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
+    boolean saveResult = boardService.save(boardDTO);
+    if (saveResult) {
+      System.out.println("글 작성 성공");
+    } else {
+      System.out.println("글 작성 실패");
+    }
+    return "redirect:/board/list";
   }
 }

@@ -10,4 +10,9 @@
     <select id="count" resultType="int">
         SELECT COUNT(id) FROM board_table
     </select>
+
+    <insert id="save" parameterType="board">
+        INSERT INTO board_table (boardTitle, boardWriter, boardContents, boardCreatedDate, boardFileName)
+        VALUES (#{boardTitle}, #{boardWriter}, #{boardContents}, now(), #{boardFileName})
+    </insert>
 </mapper>

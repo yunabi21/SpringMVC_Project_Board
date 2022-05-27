@@ -5,7 +5,10 @@ import com.its.board.dto.PageDTO;
 import com.its.board.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,5 +42,20 @@ public class BoardService {
     if (endPage > maxPage) endPage = maxPage;
 
     return new PageDTO(page, startPage, endPage, maxPage);
+  }
+
+  public boolean save(BoardDTO boardDTO) throws IOException {
+    System.out.println("BoardService.save");
+
+    MultipartFile boardFile = boardDTO.getBoardFile();
+    String boardFileName = boardFile.getOriginalFilename();
+    boardFileName = System.currentTimeMillis() + "-" + boardFileName;
+    boardDTO.setBoardFileName(boardFileName);
+    String savePath = "D:\\project_img\\board\\" +  boardFileName;
+
+    if (!boardFile.isEmpty()) boardFile.transferTo(new File(savePath));
+
+    int saveResult = boardRepository.save(boardDTO);
+    return saveResult > 0;
   }
 }

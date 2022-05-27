@@ -22,7 +22,7 @@ public class MemberService {
     String memberProfileFileName = memberProfile.getOriginalFilename();
     memberProfileFileName = System.currentTimeMillis() + "-" + memberProfileFileName;
     memberDTO.setMemberProfileFileName(memberProfileFileName);
-    String savePath = "D:\\project_img\\" + memberProfileFileName;
+    String savePath = "D:\\project_img\\profile\\" + memberProfileFileName;
 
     if (!memberProfile.isEmpty()) {
       memberProfile.transferTo(new File(savePath));

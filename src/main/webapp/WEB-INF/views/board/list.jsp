@@ -35,7 +35,7 @@
           <td>${board.boardTitle}</td>
           <td>${board.boardContents}</td>
           <td>${board.boardWriter}</td>
-          <td>${board.boardCreatedDate}</td>
+          <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.boardCreatedDate}" /></td>
           <td>${board.boardHits}</td>
         </tr>
       </c:forEach>
@@ -53,12 +53,12 @@
     <c:choose>
       <c:when test="${paging.page<=1}">
         <li class="page-item disabled">
-          <a class="page-link">이전</a>
+          <a class="page-link"><</a>
         </li>
       </c:when>
       <c:otherwise>
         <li class="page-item">
-          <a class="page-link" href="${pageContext.request.contextPath}/board/list?page=${paging.page-1}">이전</a>
+          <a class="page-link" href="${pageContext.request.contextPath}/board/list?page=${paging.page-1}"><</a>
         </li>
       </c:otherwise>
     </c:choose>
@@ -81,12 +81,12 @@
     <c:choose>
       <c:when test="${paging.page>=paging.endPage}">
         <li class="page-item disabled">
-          <a class="page-link">다음</a>
+          <a class="page-link">></a>
         </li>
       </c:when>
       <c:otherwise>
         <li class="page-item">
-          <a class="page-link" href="${pageContext.request.contextPath}/board/list?id=${paging.page+1}">다음</a>
+          <a class="page-link" href="${pageContext.request.contextPath}/board/list?id=${paging.page+1}">></a>
         </li>
       </c:otherwise>
     </c:choose>
