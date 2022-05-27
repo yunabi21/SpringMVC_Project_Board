@@ -73,4 +73,9 @@ public class BoardService {
 
     if (!boardFile.isEmpty()) boardFile.transferTo(new File(savePath));
   }
+
+  public void delete(Long id) {
+    System.out.println("BoardService.delete");
+    boardRepository.delete(id);
+  }
 }

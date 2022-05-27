@@ -39,4 +39,8 @@ public class BoardRepository {
     System.out.println("BoardRepository.update");
     sql.update("Board.update", boardDTO);
   }
+
+  public void delete(Long id) {
+    sql.delete("Board.delete", id);
+  }
 }

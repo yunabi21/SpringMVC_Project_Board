@@ -28,4 +28,8 @@
         UPDATE board_table SET boardTitle = #{boardTitle}, boardContents = #{boardContents}, boardFileName = #{boardFileName}
         WHERE id = #{id}
     </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM board_table WHERE id = #{id}
+    </delete>
 </mapper>

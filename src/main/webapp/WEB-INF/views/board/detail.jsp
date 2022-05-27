@@ -104,7 +104,7 @@
   }
 
   const deleteBTN = () => {
-
+    location.href = '/board/delete?id=${board.id}';
   }
 
   const commentSaveBTN = () => {

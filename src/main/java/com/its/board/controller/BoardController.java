@@ -105,4 +105,12 @@ public class BoardController {
     model.addAttribute("board", boardDTO);
     return "redirect:/board/detail?id=" + boardDTO.getId() + "&page=" + page + "&boardWriter=" + boardDTO.getBoardWriter();
   }
+
+  @GetMapping("/delete")
+  public String delete(@RequestParam("id") Long id) {
+    System.out.println("BoardController.delete");
+
+    boardService.delete(id);
+    return "redirect:/board/list";
+  }
 }
