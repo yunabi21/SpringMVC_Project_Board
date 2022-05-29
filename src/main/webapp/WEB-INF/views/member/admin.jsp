@@ -37,7 +37,7 @@
         <td>${member.memberName}</td>
         <td>${member.memberEmail}</td>
         <td>${member.memberMobile}</td>
-        <td><input type="button" class="btn btn-dark" value="삭제"></td>
+        <td><a href="${pageContext.request.contextPath}/member/delete?id=${member.id}">회원삭제</a></td>
       </tr>
     </c:forEach>
     </tbody>

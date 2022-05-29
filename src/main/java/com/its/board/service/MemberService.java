@@ -63,4 +63,9 @@ public class MemberService {
     System.out.println("MemberService.findAll");
     return memberRepository.findAll();
   }
+
+  public void delete(Long id) {
+    System.out.println("MemberService.delete");
+    memberRepository.delete(id);
+  }
 }
