@@ -48,6 +48,8 @@ public class MemberService {
   }
 
   private void saveFile(MemberDTO memberDTO) throws IOException {
+    System.out.println("MemberService.saveFile");
+
     MultipartFile memberProfile = memberDTO.getMemberProfile();
     String memberProfileFileName = memberProfile.getOriginalFilename();
     memberProfileFileName = System.currentTimeMillis() + "-" + memberProfileFileName;

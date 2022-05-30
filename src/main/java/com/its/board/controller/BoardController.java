@@ -33,7 +33,7 @@ public class BoardController {
   public String list(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
                      Model model) {
     System.out.println("BoardController.list");
-    System.out.println("page = " + page + ", model = " + model);
+    System.out.println("page = " + page);
 
     List<BoardDTO> boardDTOList = boardService.pagingList(page);
     PageDTO pageDTO = boardService.paging(page);
