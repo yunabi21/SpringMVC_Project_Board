@@ -80,4 +80,13 @@ public class BoardService {
     System.out.println("BoardService.delete");
     boardRepository.delete(id);
   }
+
+  public List<BoardDTO> search(String searchType, String query) {
+    System.out.println("BoardService.search");
+
+    Map<String, String> searchParam = new HashMap<>();
+    searchParam.put("type", searchType);
+    searchParam.put("query", query);
+    return boardRepository.search(searchParam);
+  }
 }

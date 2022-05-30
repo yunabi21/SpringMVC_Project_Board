@@ -45,16 +45,39 @@
 </div>
 <c:choose>
   <c:when test="${sessionScope.loginId==null}">
-    <div class="container">
-      <div class="col-md-3 align-content-end">
-
+    <div class="container board-btn-wrap">
+      <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 align-content-end">
+          <form action="${pageContext.request.contextPath}/board/search" method="get">
+            <select name="searchType">
+              <option value="boardTitle">제목</option>
+              <option value="boardWriter">작성자</option>
+            </select>
+            <input type="text" name="query" class="form-control-sm col-6" placeholder="검색어 입력">
+            <input type="submit" class="btn btn-dark" value="검색">
+          </form>
+        </div>
       </div>
     </div>
   </c:when>
   <c:otherwise>
-    <div class="container">
-      <div class="col-md-3 align-content-end">
-        <button type="button" onclick="boardSaveForm()" class="btn btn-outline-dark me-2 mb-4">글 작성</button>
+    <div class="container board-btn-wrap">
+      <div class="row">
+        <div class="col-md-8">
+          <button type="button" onclick="boardSaveForm()" class="btn btn-outline-dark me-2 mb-4">글 작성</button>
+        </div>
+        <div class="col-md-4 justify-content-end">
+          <form action="${pageContext.request.contextPath}/board/search" method="get">
+            <select name="searchType">
+              <option value="boardTitle">제목</option>
+              <option value="boardWriter">작성자</option>
+            </select>
+            <input type="text" name="query" class="form-control-sm col-6" placeholder="검색어 입력">
+            <input type="submit" class="btn btn-dark" value="검색">
+          </form>
+        </div>
       </div>
     </div>
   </c:otherwise>

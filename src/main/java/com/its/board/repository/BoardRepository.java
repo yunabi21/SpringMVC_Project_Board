@@ -41,6 +41,12 @@ public class BoardRepository {
   }
 
   public void delete(Long id) {
+    System.out.println("BoardRepository.delete");
     sql.delete("Board.delete", id);
+  }
+
+  public List<BoardDTO> search(Map<String, String> searchParam) {
+    System.out.println("BoardRepository.search");
+    return sql.selectList("Board.search", searchParam);
   }
 }

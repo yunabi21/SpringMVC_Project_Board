@@ -32,4 +32,9 @@
     <delete id="delete" parameterType="Long">
         DELETE FROM board_table WHERE id = #{id}
     </delete>
+
+    <select id="search" parameterType="java.util.HashMap" resultType="board">
+        SELECT * FROM board_table WHERE ${type} LIKE concat('%', #{query}, '%')
+        ORDER BY id DESC;
+    </select>
 </mapper>

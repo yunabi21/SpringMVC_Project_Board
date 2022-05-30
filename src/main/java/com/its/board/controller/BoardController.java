@@ -121,4 +121,15 @@ public class BoardController {
     boardService.delete(id);
     return "redirect:/board/list";
   }
+
+  @GetMapping("/search")
+  public String search(@RequestParam("searchType") String searchType,
+                       @RequestParam("query") String query,
+                       Model model) {
+    System.out.println("BoardController.search");
+
+    List<BoardDTO> boardDTOList = boardService.search(searchType, query);
+    model.addAttribute("boardList", boardDTOList);
+    return "board/list";
+  }
 }
