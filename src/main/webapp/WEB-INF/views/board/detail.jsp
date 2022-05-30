@@ -66,6 +66,12 @@
         <input type="button" class="btn btn-dark" onclick="deleteBTN()" value="삭제">
       </div>
     </c:when>
+    <c:when test="${sessionScope.loginMemberId eq 'admin'}">
+      <div class="edit-delete-wrap">
+        <input type="button" class="btn btn-dark" onclick="listBack()" value="목록">
+        <input type="button" class="btn btn-dark" onclick="deleteBTN()" value="삭제">
+      </div>
+    </c:when>
     <c:otherwise>
       <div class="edit-delete-wrap">
         <input type="button" class="btn btn-dark" onclick="listBack()" value="목록">
