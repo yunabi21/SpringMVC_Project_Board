@@ -68,4 +68,9 @@ public class MemberService {
     System.out.println("MemberService.delete");
     memberRepository.delete(id);
   }
+
+  public boolean duplicateCheck(String memberId) {
+    System.out.println("MemberService.duplicateCheck");
+    return memberRepository.duplicateCheck(memberId) == null;
+  }
 }

@@ -39,10 +39,17 @@ public class MemberRepository {
   }
 
   public List<MemberDTO> findAll() {
+    System.out.println("MemberRepository.findAll");
     return sql.selectList("Member.findAll");
   }
 
   public void delete(Long id) {
+    System.out.println("MemberRepository.delete");
     sql.delete("Member.delete", id);
+  }
+
+  public MemberDTO duplicateCheck(String memberId) {
+    System.out.println("MemberRepository.duplicateCheck");
+    return sql.selectOne("Member.duplicateCheck", memberId);
   }
 }

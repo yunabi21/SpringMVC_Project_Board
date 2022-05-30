@@ -122,4 +122,22 @@ public class MemberController {
     return "redirect:/member/admin";
   }
 
+  @PostMapping("/duplicate-check")
+  public @ResponseBody String duplicateCheck(@RequestParam("memberId") String memberId,
+                                             Model model) {
+    System.out.println("MemberController.duplicateCheck");
+    System.out.println("memberId = " + memberId);
+
+    boolean checkResult = memberService.duplicateCheck(memberId);
+    String resultP;
+    System.out.println(checkResult);
+
+    if (checkResult) {
+      resultP = "ok";
+    } else {
+      resultP = "no";
+    }
+    model.addAttribute("result", resultP);
+    return resultP;
+  }
 }

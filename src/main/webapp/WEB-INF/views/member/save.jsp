@@ -11,7 +11,8 @@
   <title>회원가입 페이지</title>
   <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../../resources/css/save.css">
-<%--  <script src="../../../resources/js/save.js"></script>--%>
+  <script src="../../../resources/js/save.js"></script>
+  <script src="../../../resources/js/jquery.js"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp"/>
@@ -24,8 +25,9 @@
   <form action="/member/save" method="post" enctype="multipart/form-data">
     <div class="signup-content-wrap">
       <div class="form-floating mb-4">
-        <input type="text" name="memberId" id="input-id" class="form-control form-control-sm" placeholder="아이디">
+        <input type="text" name="memberId" id="input-id" onblur="duplicateCheck()" class="form-control form-control-sm" placeholder="아이디">
         <label for="input-id">아이디</label>
+        <p id="result-id"></p>
       </div>
       <div class="form-floating mb-4">
         <input type="password" name="memberPassword" id="input-password" class="form-control form-control-sm" placeholder="비밀번호">
@@ -56,7 +58,33 @@
 </body>
 <script>
   const duplicateCheck = () => {
+    const memberId = $("#input-id").val();
+    const resultP = document.getElementById("result-id");
+    const btn = document.getElementById("submit-button");
 
+    $.ajax({
+      url: '/member/duplicate-check',
+      type: 'post',
+      data: {"memberId" : memberId},
+      dataType: 'text',
+
+      success: function (result) {
+        console.log(result);
+
+        if (result === 'ok') {
+          resultP.innerHTML = '사용 가능한 아이디 입니다.';
+          resultP.style.color = '#36aa36';
+          btn.removeAttribute('disabled');
+        } else {
+          resultP.innerHTML = '이미 사용중인 아이디 입니다.';
+          resultP.style.color = '#aa3636';
+          btn.disabled = 'true';
+        }
+      },
+      err: function () {
+        alert("실패");
+      }
+    });
   }
 </script>
 </html>
