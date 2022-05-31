@@ -51,6 +51,8 @@ public class BoardController {
 
   @PostMapping("/save")
   public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
+    System.out.println("BoardController.save");
+
     boolean saveResult = boardService.save(boardDTO);
     if (saveResult) {
       System.out.println("글 작성 성공");

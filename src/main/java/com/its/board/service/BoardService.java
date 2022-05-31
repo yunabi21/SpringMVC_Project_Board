@@ -65,6 +65,8 @@ public class BoardService {
   }
 
   private void saveFile(BoardDTO boardDTO) throws IOException {
+    System.out.println("BoardService.saveFile");
+
     MultipartFile boardFile = boardDTO.getBoardFile();
     String boardFileName = boardFile.getOriginalFilename();
     boardFileName = System.currentTimeMillis() + "-" + boardFileName;
